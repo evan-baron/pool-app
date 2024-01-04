@@ -10,18 +10,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Keep Score</h1>
-        <div class="main-menu-container">
-            <button class="8-ball">8-Ball</button>
-            <button class="9-ball">9-Ball</button>
-            <button class="10-ball">10-Ball</button>
-            <button class="14-1">14.1</button>
-            <button class="one-pocket">One Pocket</button>
+        <h1 id="title">Score App</h1>
+        <div class="main-menu-container" id="mmc">
+            <button class="8-ball" id="8-ball" onclick="gameSelect(this.id)">8-Ball</button>
+            <button class="9-ball" id="9-ball" onclick="gameSelect(this.id)">9-Ball</button>
+            <button class="10-ball" id="10-ball" onclick="gameSelect(this.id)">10-Ball</button>
+            <button class="14.1" id="14.1" onclick="gameSelect(this.id)">14.1</button>
+            <button class="one-pocket" id="one-pocket" onclick="gameSelect(this.id)">One Pocket</button>
         </div>
-        <div class="add-players-container">
-
+        <div class="add-players-container" id="apc">
+            <div class="player-input-container" id="player1">
+                <input type="text" name="" id="input-player1" class="input-player" placeholder="Player 1">
+            </div>
+            <button class="add-player" id="add-player" onclick="addPlayer(this.id)"><span>+</span> Add Player</button>
+            <button class="back" id="back" onclick="mainMenu()">Back to Main Menu</button>
         </div>
-        <div class="keep-score-container">
+        <div class="keep-score-container" id="ksc">
 
         </div>
     </div>

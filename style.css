@@ -1,5 +1,6 @@
 
 * {
+    font-family: Calibri;
     box-sizing: border-box;
     margin: 0;
 }
@@ -19,16 +20,8 @@ body {
     min-height: 100vh;
 }
 
-.main-menu-container {
-    height: calc(100% - 5rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding-top: 1.5rem;
-}
-
 h1 {
+    font-family: Calibri;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -41,11 +34,131 @@ h1 {
     border-bottom: 2px gray solid;
 }
 
-button {
+/** Main Menu **/
+
+.main-menu-container {
+    display: flex; /* Don't forget to change back to flex */
+    height: calc(100vh - 5rem);
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.main-menu-container > button {
     border: 2px gray solid;
     border-radius: 5px;
     width: 60%;
     font-size: 30px;
+    padding: .35rem 0;
     background-color: #242424;
     color: white;
+}
+
+.main-menu-container > button:active {
+    background-color: darkgray;
+}
+
+/** Add Players **/
+
+.add-players-container {
+    display: none; /* Don't forget to change back to none */
+    height: calc(100vh - 5rem);
+    flex-direction: column;
+    margin: 0 2rem;
+    /* border: 1px solid aqua; */
+}
+
+.player-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    /* border: 1px solid aqua; */
+}
+
+.player-input-container > button {
+    font-size: 15px;
+    height: 2.5rem;
+    border: 2px gray solid;
+    border-radius: 5px;
+    background-color: #242424;
+    color: white;
+    opacity: .5;
+}
+
+.player-input-container > button:active {
+    background-color: darkgray;
+}
+
+.player-input-container > button:focus {
+    color: rgb(225, 225, 225);
+    outline: 1px solid white !important;
+    border: 1px solid rgb(225, 225, 225);
+    opacity: 1;
+}
+
+.input-player {
+    border: none;
+    height: 2.5rem;
+    width: 70%;
+    font-size: 1.5rem;
+    text-indent: .5rem;
+    color: rgba(225, 225, 225, .75);
+    background-color:  #353535;
+    box-shadow: inset 1px 1px 5px rgb(15, 15, 15);
+}
+
+.input-player::placeholder {
+    left: 1rem;
+    color: rgba(225, 225, 225, .5);
+}
+
+.input-player:focus {
+    color: rgb(225, 225, 225);
+    outline: 1px solid white !important;
+    border: 1px solid rgb(225, 225, 225);
+}
+
+.add-player {
+    width: 50%;
+    color: white;
+    background-color: #242424;
+    border: 0px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    margin-top: .5rem;
+    font-size: 20px;
+}
+
+.add-player > span {
+    font-size: 25px;
+}
+
+.add-player:active {
+    color: darkgray;
+}
+
+/* .add-player:focus {
+    color: rgb(225, 225, 225);
+    outline: 1px solid white !important;
+    border: 1px solid rgb(225, 225, 225);
+} */
+
+.back {
+    align-self: center;
+    border: 2px gray solid;
+    border-radius: 5px;
+    width: 80%;
+    font-size: 20px;
+    padding: .35rem 0;
+    background-color: #242424;
+    color: white;
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+}
+
+.back:active {
+    background-color: darkgray;
 }
