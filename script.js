@@ -8,10 +8,13 @@ window.addEventListener("resize", () => {
 
 let playerCount = 1;
 let players = [];
-let game = [];
+let availableGames = ['8-ball','9-ball','10-ball','14.1','one-pocket']
+let selectedGame = [];
+let selectedGameOrigIndex = [];
 
-function gameSelect(btnID) {
-    game.push(btnID);
+function gameSelect(event) {
+    selectedGame.push(event.target.id);
+    selectedGameOrigIndex.push(availableGames.indexOf(selectedGame[0]));
     document.getElementById('mmc').style.display = "none";
     document.getElementById('apc').style.display = "flex";
     document.getElementById('title').innerHTML = "Add Players";
@@ -21,24 +24,25 @@ function backButton() {
     document.getElementById('mmc').style.display = "flex";
     document.getElementById('apc').style.display = "none";
     document.getElementById('title').innerHTML = "Score App";
-    game.pop(0);
+    selectedGame.pop(0);
+    selectedGameOrigIndex.pop(0);
 }
 
-function addPlayer(param) {
+function addPlayer() {
     let newPlayer = document.createElement('div')
-    if (parseInt(document.getElementById(param).previousElementSibling.id[6]) < 5) {
+    if (parseInt(document.getElementById('add-player').previousElementSibling.id[6]) < 5) {
         playerCount += 1
-        document.getElementById(param).insertAdjacentElement("beforebegin", newPlayer)
+        document.getElementById('add-player').insertAdjacentElement("beforebegin", newPlayer)
         newPlayer.setAttribute('class', 'player-input-container')
         newPlayer.setAttribute('id', 'player' + (parseInt(newPlayer.previousElementSibling.id[6]) + 1));
         newPlayer.innerHTML = `<input type="text" name="" id="input-player${parseInt(newPlayer.previousElementSibling.id[6]) + 1}" class="input-player" placeholder="Player ${parseInt(newPlayer.previousElementSibling.id[6]) + 1}">
         <button class="remove" id="remove${parseInt(newPlayer.previousElementSibling.id[6]) + 1}" onclick="removePlayer(this.id)">Remove</button>`
     }
 
-    if (document.getElementById(param).previousElementSibling.id[6] > 4) {
-        document.getElementById(param).style.display = 'none'
+    if (document.getElementById('add-player').previousElementSibling.id[6] > 4) {
+        document.getElementById('add-player').style.display = 'none'
     } else {
-        document.getElementById(param).style.display = ''
+        document.getElementById('add-player').style.display = ''
     }
 }
 
@@ -73,7 +77,7 @@ function startButton() {
             }
         }
         console.log(players)
-        switch(game[0]) {
+        switch(selectedGame[0]) {
             case '8-ball':
                 console.log('8');
                 /* GO TO GAME SCREEN */
@@ -95,12 +99,50 @@ function startButton() {
                 /* GO TO GAME SCREEN */
                 break;
         }
-        // document.getElementById('apc').style.display = "none";
-        // document.getElementById('title').innerHTML = "Keep Score";
-        // document.getElementById('ksc').style.display = "flex";
+        document.getElementById('apc').style.display = "none";
+        document.getElementById('title').innerHTML = "Keep Score";
+        document.getElementById('ksc').style.display = "flex";
     }
 }
 
-function okBtn() {
+function okAlert() {
     document.getElementById('alert').style.display = "none";
+}
+
+function changeGame() {
+    availableGames = ['8-ball','9-ball','10-ball','14.1','one-pocket']
+    availableGames.splice(availableGames.indexOf(selectedGame[0]), 1);
+    console.log(availableGames);
+    for (let i = 0; i<availableGames.length; i++) {
+        let addGameButton = document.createElement('button');
+        document.getElementById('cancel').insertAdjacentElement('beforebegin', addGameButton);
+        addGameButton.setAttribute('class', 'cg-button');
+        addGameButton.setAttribute('id', 'cg-'+availableGames[i]);
+        addGameButton.setAttribute('onclick', 'initChange(event)');
+        addGameButton.innerHTML = document.getElementById(availableGames[i]).innerHTML;
+    }
+    //<button class="8-ball" id="8-ball" onclick="gameSelect(event)">8-Ball</button>
+
+    document.getElementById('cg-container').style.display = "flex";
+}
+
+function cgCancel() {
+    document.getElementById('cg-container').style.display = "none";
+    for (let i = 0; i<availableGames.length; i++) {
+        document.getElementById('cg-'+availableGames[i]).remove();
+    }
+}
+
+function initChange(event) {
+    for (let i = 0; i<availableGames.length; i++) {
+        document.getElementById('cg-'+availableGames[i]).remove();
+    }
+    let curGame = event.target.id.replace('cg-','');
+    availableGames.splice(selectedGameOrigIndex[0], 0, selectedGame[0]);
+    selectedGame.splice(0, 1);
+    selectedGame.push(curGame);
+    selectedGameOrigIndex.splice(0, 1);
+    selectedGameOrigIndex.push(availableGames.indexOf(curGame));
+    availableGames.splice(availableGames.indexOf(selectedGame[0]), 1);
+    document.getElementById('cg-container').style.display = "none";
 }

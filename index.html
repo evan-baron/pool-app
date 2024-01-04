@@ -12,30 +12,43 @@
     <div class="container">
         <h1 id="title">Choose Game</h1>
         <div class="main-menu-container" id="mmc">
-            <button class="8-ball" id="8-ball" onclick="gameSelect(this.id)">8-Ball</button>
-            <button class="9-ball" id="9-ball" onclick="gameSelect(this.id)">9-Ball</button>
-            <button class="10-ball" id="10-ball" onclick="gameSelect(this.id)">10-Ball</button>
-            <button class="14.1" id="14.1" onclick="gameSelect(this.id)">14.1</button>
-            <button class="one-pocket" id="one-pocket" onclick="gameSelect(this.id)">One Pocket</button>
+            <button class="8-ball" id="8-ball" onclick="gameSelect(event)">8-Ball</button>
+            <button class="9-ball" id="9-ball" onclick="gameSelect(event)">9-Ball</button>
+            <button class="10-ball" id="10-ball" onclick="gameSelect(event)">10-Ball</button>
+            <button class="14.1" id="14.1" onclick="gameSelect(event)">14.1</button>
+            <button class="one-pocket" id="one-pocket" onclick="gameSelect(event)">One Pocket</button>
         </div>
         <div class="add-players-container" id="apc">
             <div class="player-input-container" id="player1">
                 <input type="text" name="" id="input-player1" class="input-player" placeholder="Player 1">
             </div>
-            <button class="add-player" id="add-player" onclick="addPlayer(this.id)"><span>+</span> Add Player</button>
+            <button class="add-player" id="add-player" onclick="addPlayer()"><span>+</span> Add Player</button>
             <div class="apc-button-container">
                 <button class="back" id="back" onclick="backButton()">Back</button>
                 <button class="start" id="start" onclick="startButton()">Start</button>
             </div>
         </div>
         <div class="keep-score-container" id="ksc">
-
+            <div class="score-container">
+                
+            </div>
+            <div class="ksc-buttons-container">
+                <button class="change-game" id="change" onclick="changeGame()">Change Game</button>
+                <button class="finish" id="finish" onclick="finishGame()">Finish</button>
+            </div>
         </div>
         <div class="alert-container" id="alert">
             <div class="shader" id="shader"></div>
             <div class="alert-box" id="alert-box">
                 <div class="alert" id="alert-msg">Not enough players</div>
-                <button class="ok" id="ok" onclick="okBtn()">OK</button>
+                <button class="ok" id="okAlert" onclick="okAlert()">OK</button>
+            </div>
+        </div>
+        <div class="change-game-container" id="cg-container">
+            <div class="shader" id="shader"></div>
+            <div class="cg-selector-container" id="cg-selector">
+                <h2>Select New Game</h2>
+                <button class="cg-button" id="cancel" onclick="cgCancel()">Cancel</button>
             </div>
         </div>
     </div>
