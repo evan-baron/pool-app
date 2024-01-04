@@ -36,7 +36,7 @@ function addPlayer(param) {
         newPlayer.setAttribute('class', 'player-input-container')
         newPlayer.setAttribute('id', 'player' + (parseInt(newPlayer.previousElementSibling.id[6]) + 1));
         newPlayer.innerHTML = `<input type="text" name="" id="input-player${parseInt(newPlayer.previousElementSibling.id[6]) + 1}" class="input-player" placeholder="Player ${parseInt(newPlayer.previousElementSibling.id[6]) + 1}">
-        <button class="remove" id="remove${parseInt(newPlayer.previousElementSibling.id[6]) + 1}" onclick="remove(this.id)">Remove</button>`
+        <button class="remove" id="remove${parseInt(newPlayer.previousElementSibling.id[6]) + 1}" onclick="removePlayer(this.id)">Remove</button>`
     }
 
     if (document.getElementById(param).previousElementSibling.id[6] > 4) {
@@ -46,7 +46,7 @@ function addPlayer(param) {
     }
 }
 
-function remove(param) {
+function removePlayer(param) {
     let removeID = parseInt(param[6]);
     console.log(param[6]);
     document.getElementById('player'+removeID).remove();
