@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="title">Score App</h1>
+        <h1 id="title">Choose Game</h1>
         <div class="main-menu-container" id="mmc">
             <button class="8-ball" id="8-ball" onclick="gameSelect(this.id)">8-Ball</button>
             <button class="9-ball" id="9-ball" onclick="gameSelect(this.id)">9-Ball</button>
@@ -23,10 +23,20 @@
                 <input type="text" name="" id="input-player1" class="input-player" placeholder="Player 1">
             </div>
             <button class="add-player" id="add-player" onclick="addPlayer(this.id)"><span>+</span> Add Player</button>
-            <button class="back" id="back" onclick="mainMenu()">Back to Main Menu</button>
+            <div class="apc-button-container">
+                <button class="back" id="back" onclick="backButton()">Back</button>
+                <button class="start" id="start" onclick="startButton()">Start</button>
+            </div>
         </div>
         <div class="keep-score-container" id="ksc">
 
+        </div>
+        <div class="alert-container" id="alert">
+            <div class="shader" id="shader"></div>
+            <div class="alert-box" id="alert-box">
+                <div class="alert" id="alert-msg">Not enough players</div>
+                <button class="ok" id="ok" onclick="okBtn()">OK</button>
+            </div>
         </div>
     </div>
 </body>
