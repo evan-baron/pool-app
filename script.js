@@ -48,10 +48,8 @@ function addPlayer(param) {
 
 function removePlayer(param) {
     let removeID = parseInt(param[6]);
-    console.log(param[6]);
     document.getElementById('player'+removeID).remove();
     for (let i = parseInt(param[6]); i<players; i++) {
-        console.log(document.getElementById('player'+(i+1)));
         document.getElementById('player'+(i+1)).setAttribute('id', 'player'+i);
         document.getElementById('remove'+(i+1)).setAttribute('id', 'remove'+i);
         document.getElementById('input-player'+(i+1)).setAttribute('placeholder', 'Player '+i);
