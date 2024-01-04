@@ -8,7 +8,6 @@
 body {
     background-color: #242424;
     width: 100vw;
-    height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 }
 
@@ -17,7 +16,7 @@ body {
     flex-direction: column;
     background-color: #242424;
     width: 100%;
-    min-height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 h1 {
@@ -38,7 +37,6 @@ h1 {
 
 .main-menu-container {
     display: flex; /* Don't forget to change back to flex */
-    height: calc(100vh - 5rem);
     height: calc(var(--vh, 1vh) * 100 - 5rem);
     flex-direction: column;
     align-items: center;
@@ -64,7 +62,6 @@ h1 {
 
 .add-players-container {
     display: none; /* Don't forget to change back to none */
-    height: calc(100vh - 5rem);
     height: calc(var(--vh, 1vh) * 100 - 5rem);
     flex-direction: column;
     margin: 0 2rem;
