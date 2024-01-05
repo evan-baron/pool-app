@@ -39,6 +39,12 @@ h2 {
     font-size: 25px;
 }
 
+h3 {
+    font-family: Calibri;
+    color: white;
+    font-size: 20px;
+}
+
 /** Main Menu **/
 
 .main-menu-container {
@@ -367,6 +373,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    padding-top: 0rem;
     background-color: #242424;
     box-shadow: 5px 10px 10px black;
     border-radius: 5px;
@@ -389,4 +396,20 @@ h2 {
     background-color: #242424;
     color: white;
     margin-top: auto;
+}
+
+#fs-msg > h1 {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    padding: .25rem 0;
+}
+
+#fs-msg > h2 {
+    padding-top: 1rem;
+    padding-bottom: .25rem;
+}
+
+#fs-msg > h3 {
+    padding-left: 1rem;
 }

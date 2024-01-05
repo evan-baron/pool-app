@@ -97,7 +97,6 @@ function startButton() {
         }
 
         if (selectedGame[0] != '14.1') {
-            console.log('easy')
             //ADD GAME SCORING AND FORMATTING STUFF HERE
             for (let i = 0; i<players.length; i++) {
                 let newScoreBox = document.createElement('div');
@@ -170,7 +169,7 @@ function initChange(event) {
 
 function minus(event) {
     if (players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]] > 0) {
-        players[event.target.previousElementSibling.getAttribute('objnum')]['total-score'] -= 1;
+        players[event.target.nextSibling.getAttribute('objnum')]['total-score'] -= 1;
         players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]] -= 1;
         document.getElementById(players[event.target.nextSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]];
     }
@@ -183,12 +182,14 @@ function plus(event) {
 }
 
 function finishGame() {
+    document.getElementById('fs-msg').innerHTML = `<h1>Results</h1>`
     for (let i = 0; i<players.length; i++) {
         console.log(players[i]['name']+' won '+[players[i]['total-score']]+' total games.')
-        document.getElementById('fs-msg').innerHTML += `<h2>${players[i]['name']} won ${[players[i]['total-score']]} games.</h2>`
+        document.getElementById('fs-msg').innerHTML += `<h2>${players[i]['name']} won ${[players[i]['total-score']]} games</h2>`
         for (const key in players[i]) {
-            if (players[i][key] > 0) {
+            if (players[i][key] > 0 && key != 'total-score') {
                 console.log(`${key}: ${players[i][key]}`);
+                document.getElementById('fs-msg').innerHTML += `<h3>${key}: ${players[i][key]} games</h3>`
             }
         }
     }
@@ -198,4 +199,9 @@ function finishGame() {
 
 function fsBack() {
     document.getElementById('fs-container').style.display = 'none';
+    document.getElementById('fs-msg').innerHTML = '';
+}
+
+function done() {
+    location.reload();
 }
