@@ -163,7 +163,7 @@ function initChange(event) {
     }
 
     for (let i = 0; i<players.length; i++) {
-        document.getElementById('player-'+[i+1]+'-counter').innerHTML = players[i][selectedGame[0]];
+        document.getElementById(players[i]['name']+'-counter').innerHTML = players[i][selectedGame[0]];
     }
 }
 
