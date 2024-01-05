@@ -101,7 +101,7 @@ function startButton() {
             for (let i = 0; i<players.length; i++) {
                 let newScoreBox = document.createElement('div');
                 newScoreBox.setAttribute('class', 'scorebox')
-                newScoreBox.innerHTML = `<h2 class="player">${players[i]['name']}:</h2><div class="scores" id="${(players[i]['name']).toLowerCase()}-score"><h2 class="minus" onclick="minus(event)">−</h2><h2 class="counter" id="${(players[i]['name']).toLowerCase()}-counter" objnum="${i}">${players[i][selectedGame[0]]}</h2><h2 class="plus" onclick="plus(event)">+</h2></div>`;
+                newScoreBox.innerHTML = `<h2 class="player">${players[i]['name']}:</h2><div class="scores" id="${(players[i]['name'])}-score"><h2 class="minus" onclick="minus(event)">−</h2><h2 class="counter" id="${(players[i]['name'])}-counter" objnum="${i}">${players[i][selectedGame[0]]}</h2><h2 class="plus" onclick="plus(event)">+</h2></div>`;
                 document.getElementById('scores-cont').appendChild(newScoreBox);
             }
         } else {
@@ -171,14 +171,14 @@ function minus(event) {
     if (players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]] > 0) {
         players[event.target.nextSibling.getAttribute('objnum')]['total-score'] -= 1;
         players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]] -= 1;
-        document.getElementById(players[event.target.nextSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]];
+        document.getElementById(players[event.target.nextSibling.getAttribute('objnum')]['name']+'-counter').innerHTML = players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]];
     }
 }
 
 function plus(event) {
     players[event.target.previousElementSibling.getAttribute('objnum')]['total-score'] += 1;
     players[event.target.previousElementSibling.getAttribute('objnum')][selectedGame[0]] += 1;
-    document.getElementById(players[event.target.previousElementSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.previousElementSibling.getAttribute('objnum')][selectedGame[0]];
+    document.getElementById(players[event.target.previousElementSibling.getAttribute('objnum')]['name']+'-counter').innerHTML = players[event.target.previousElementSibling.getAttribute('objnum')][selectedGame[0]];
 }
 
 function finishGame() {
