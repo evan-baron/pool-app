@@ -8,7 +8,7 @@ window.addEventListener("resize", () => {
 
 let playerCount = 1;
 let players = [];
-let availableGames = ['8-ball','9-ball','10-ball','14.1','one-pocket']
+let availableGames = ['8-ball','9-ball','10-ball','one-pocket','14.1']
 let selectedGame = [];
 let selectedGameOrigIndex = [];
 
@@ -73,35 +73,44 @@ function startButton() {
             if (document.getElementById('input-player'+(parseInt(i)+1)).value == '') {
                 players[i] = {
                     name: 'Player-'+(parseInt(i)+1),
-                    score: 0
+                    game: selectedGame[0],
+                    '8-ball': 0,
+                    '9-ball': 0,
+                    '10-ball': 0,
+                    '14.1': 0,
+                    'one-pocket': 0,
+                    'total-score': 0
                 };
                 //MAKE PLAYERS AN OBJECT AND THEN YOU CAN KEEP PLAYER NAME AND SCORE TOGETHER IN ONE SPOT
             } else {
                 players[i] = {
                     name: document.getElementById('input-player'+(parseInt(i)+1)).value,
-                    score: 0
+                    game: selectedGame[0],
+                    '8-ball': 0,
+                    '9-ball': 0,
+                    '10-ball': 0,
+                    '14.1': 0,
+                    'one-pocket': 0,
+                    'total-score': 0
                 }
             }
         }
-        console.log(players)
-        if (selectedGame[0] == '8-ball' || selectedGame[0] == '9-ball' || selectedGame[0] == '10-ball') {
+
+        if (selectedGame[0] != '14.1') {
             console.log('easy')
             //ADD GAME SCORING AND FORMATTING STUFF HERE
             for (let i = 0; i<players.length; i++) {
                 let newScoreBox = document.createElement('div');
                 newScoreBox.setAttribute('class', 'scorebox')
-                newScoreBox.innerHTML = `<h2 class="player">${players[i]['name']}:</h2><div class="scores" id="${(players[i]['name']).toLowerCase()}-score"><h2 class="minus" onclick="minus(event)">−</h2><h2 class="counter" id="${(players[i]['name']).toLowerCase()}-counter" objnum="${i}">${players[i]['score']}</h2><h2 class="plus" onclick="plus(event)">+</h2></div>`;
+                newScoreBox.innerHTML = `<h2 class="player">${players[i]['name']}:</h2><div class="scores" id="${(players[i]['name']).toLowerCase()}-score"><h2 class="minus" onclick="minus(event)">−</h2><h2 class="counter" id="${(players[i]['name']).toLowerCase()}-counter" objnum="${i}">${players[i][selectedGame[0]]}</h2><h2 class="plus" onclick="plus(event)">+</h2></div>`;
                 document.getElementById('scores-cont').appendChild(newScoreBox);
             }
-        } else if (selectedGame[0] == '14.1') {
-            console.log('hard')
-            //ADD GAME SCORING AND FORMATTING STUFF HERE
         } else {
             console.log('hardest')
             //ADD GAME SCORING AND FORMATTING STUFF HERE
         }
         document.getElementById('apc').style.display = "none";
-        document.getElementById('title').innerHTML = "Keep Score";
+        document.getElementById('title').innerHTML = selectedGame[0];
         document.getElementById('ksc').style.display = "flex";
     }
 }
@@ -113,9 +122,8 @@ function okAlert() {
 }
 
 function changeGame() {
-    availableGames = ['8-ball','9-ball','10-ball','14.1','one-pocket']
+    availableGames = ['8-ball','9-ball','10-ball','one-pocket','14.1']
     availableGames.splice(availableGames.indexOf(selectedGame[0]), 1);
-    console.log(availableGames);
     for (let i = 0; i<availableGames.length; i++) {
         let addGameButton = document.createElement('button');
         document.getElementById('cancel').insertAdjacentElement('beforebegin', addGameButton);
@@ -148,16 +156,46 @@ function initChange(event) {
     selectedGameOrigIndex.push(availableGames.indexOf(curGame));
     availableGames.splice(availableGames.indexOf(selectedGame[0]), 1);
     document.getElementById('cg-container').style.display = "none";
+
+    if (selectedGame[0] == 'one-pocket') {
+        document.getElementById('title').innerHTML = 'One Pocket';
+    } else {
+        document.getElementById('title').innerHTML = selectedGame[0];
+    }
+
+    for (let i = 0; i<players.length; i++) {
+        document.getElementById('player-'+[i+1]+'-counter').innerHTML = players[i][selectedGame[0]];
+    }
 }
 
 function minus(event) {
-    if (players[event.target.nextSibling.getAttribute('objnum')]['score'] > 0) {
-        players[event.target.nextSibling.getAttribute('objnum')]['score'] -= 1;
-        document.getElementById(players[event.target.nextSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.nextSibling.getAttribute('objnum')]['score'];
+    if (players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]] > 0) {
+        players[event.target.previousElementSibling.getAttribute('objnum')]['total-score'] -= 1;
+        players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]] -= 1;
+        document.getElementById(players[event.target.nextSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.nextSibling.getAttribute('objnum')][selectedGame[0]];
     }
 }
 
 function plus(event) {
-    players[event.target.previousElementSibling.getAttribute('objnum')]['score'] += 1;
-    document.getElementById(players[event.target.previousElementSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.previousElementSibling.getAttribute('objnum')]['score'];
+    players[event.target.previousElementSibling.getAttribute('objnum')]['total-score'] += 1;
+    players[event.target.previousElementSibling.getAttribute('objnum')][selectedGame[0]] += 1;
+    document.getElementById(players[event.target.previousElementSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.previousElementSibling.getAttribute('objnum')][selectedGame[0]];
+}
+
+function finishGame() {
+    for (let i = 0; i<players.length; i++) {
+        console.log(players[i]['name']+' won '+[players[i]['total-score']]+' total games.')
+        document.getElementById('fs-msg').innerHTML += `<h2>${players[i]['name']} won ${[players[i]['total-score']]} games.</h2>`
+        for (const key in players[i]) {
+            if (players[i][key] > 0) {
+                console.log(`${key}: ${players[i][key]}`);
+            }
+        }
+    }
+    document.getElementById('fs-container').style.display = 'flex';
+    // document.getElementById('fs-msg').innerHTML = `<h2>`
+}
+
+function fsBack() {
+    document.getElementById('fs-container').style.display = 'none';
 }

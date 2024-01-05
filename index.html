@@ -15,8 +15,8 @@
             <button class="8-ball" id="8-ball" onclick="gameSelect(event)">8-Ball</button>
             <button class="9-ball" id="9-ball" onclick="gameSelect(event)">9-Ball</button>
             <button class="10-ball" id="10-ball" onclick="gameSelect(event)">10-Ball</button>
-            <button class="14.1" id="14.1" onclick="gameSelect(event)">14.1</button>
             <button class="one-pocket" id="one-pocket" onclick="gameSelect(event)">One Pocket</button>
+            <button class="14.1" id="14.1" onclick="gameSelect(event)">14.1</button>
         </div>
         <div class="add-players-container" id="apc">
             <div class="player-input-container" id="player1">
@@ -48,6 +48,16 @@
             <div class="cg-selector-container" id="cg-selector">
                 <h2>Select New Game</h2>
                 <button class="cg-button" id="cancel" onclick="cgCancel()">Cancel</button>
+            </div>
+        </div>
+        <div class="final-score-container" id="fs-container">
+            <div class="shader" id="shader"></div>
+            <div class="fs-box" id="fs-box">
+                <div class="alert" id="fs-msg"></div>
+                <div class="fs-button-box">
+                    <button class="fs-back" id="fs-back" onclick="fsBack()">Back</button>
+                    <button class="fs-done" id="fs-done" onclick="done()">Done</button>
+                </div>
             </div>
         </div>
     </div>

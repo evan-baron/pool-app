@@ -346,3 +346,47 @@ h2 {
 #cancel {
     width: 50%;
 }
+
+/** FINAL SCORE **/
+
+.final-score-container {
+    display: none; /* Don't forget to change back to none before end */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.fs-box {
+    z-index: 2;
+    width: 80%;
+    margin: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #242424;
+    box-shadow: 5px 10px 10px black;
+    border-radius: 5px;
+    gap: 1rem;
+}
+
+.fs-button-box {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.fs-back, .fs-done {
+    align-self: center;
+    width: 50%;
+    border: 2px gray solid;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: .35rem 0;
+    background-color: #242424;
+    color: white;
+    margin-top: auto;
+}
