@@ -71,39 +71,36 @@ function startButton() {
     } else {
         for (let i = 1; i<playerCount+1; i++) {
             if (document.getElementById('input-player'+i).value == '') {
-                players.push('Player '+i);
+                players.push('Player-'+i);
+                //MAKE PLAYERS AN OBJECT AND THEN YOU CAN KEEP PLAYER NAME AND SCORE TOGETHER IN ONE SPOT
             } else {
                 players.push(document.getElementById('input-player'+i).value)
             }
         }
         console.log(players)
-        switch(selectedGame[0]) {
-            case '8-ball':
-                console.log('8');
-                /* GO TO GAME SCREEN */
-                break;
-            case '9-ball':
-                console.log('9');
-                /* GO TO GAME SCREEN */
-                break;
-            case '10-ball':
-                console.log('10');
-                /* GO TO GAME SCREEN */
-                break;
-            case '14.1':
-                console.log('14.1');
-                /* GO TO GAME SCREEN */
-                break;
-            case 'one-pocket':
-                console.log('OP');
-                /* GO TO GAME SCREEN */
-                break;
+        if (selectedGame[0] == '8-ball' || selectedGame[0] == '9-ball' || selectedGame[0] == '10-ball') {
+            console.log('easy')
+            //ADD GAME SCORING AND FORMATTING STUFF HERE
+            for (let i = 0; i<players.length; i++) {
+                let newScoreBox = document.createElement('div');
+                newScoreBox.setAttribute('class', 'scorebox')
+                newScoreBox.innerHTML = `<h2 class="player">${players[i]}</h2><div class="scores" id="${players[i]}-score"><h2 class="minus" onclick="minus(event)">−</h2><div class="counter" id="${players[i]}-counter"></div><h2 class="plus" onclick="plus(event)">+</h2></div>`;
+                document.getElementById('scores-cont').appendChild(newScoreBox);
+            }
+        } else if (selectedGame[0] == '14.1') {
+            console.log('hard')
+            //ADD GAME SCORING AND FORMATTING STUFF HERE
+        } else {
+            console.log('hardest')
+            //ADD GAME SCORING AND FORMATTING STUFF HERE
         }
         document.getElementById('apc').style.display = "none";
         document.getElementById('title').innerHTML = "Keep Score";
         document.getElementById('ksc').style.display = "flex";
     }
 }
+
+//DONT FORGET TO MAKE SURE TO PREVENT AGAINST DUPLICATE NAMES
 
 function okAlert() {
     document.getElementById('alert').style.display = "none";
