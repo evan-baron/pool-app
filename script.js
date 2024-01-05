@@ -69,12 +69,18 @@ function startButton() {
     if (playerCount < 2) {
         document.getElementById('alert').style.display = 'flex';
     } else {
-        for (let i = 1; i<playerCount+1; i++) {
-            if (document.getElementById('input-player'+i).value == '') {
-                players.push('Player-'+i);
+        for (let i = 0; i<playerCount; i++) {
+            if (document.getElementById('input-player'+(parseInt(i)+1)).value == '') {
+                players[i] = {
+                    name: 'Player-'+(parseInt(i)+1),
+                    score: 0
+                };
                 //MAKE PLAYERS AN OBJECT AND THEN YOU CAN KEEP PLAYER NAME AND SCORE TOGETHER IN ONE SPOT
             } else {
-                players.push(document.getElementById('input-player'+i).value)
+                players[i] = {
+                    name: document.getElementById('input-player'+(parseInt(i)+1)).value,
+                    score: 0
+                }
             }
         }
         console.log(players)
@@ -84,7 +90,7 @@ function startButton() {
             for (let i = 0; i<players.length; i++) {
                 let newScoreBox = document.createElement('div');
                 newScoreBox.setAttribute('class', 'scorebox')
-                newScoreBox.innerHTML = `<h2 class="player">${players[i]}</h2><div class="scores" id="${players[i]}-score"><h2 class="minus" onclick="minus(event)">−</h2><div class="counter" id="${players[i]}-counter"></div><h2 class="plus" onclick="plus(event)">+</h2></div>`;
+                newScoreBox.innerHTML = `<h2 class="player">${players[i]['name']}:</h2><div class="scores" id="${(players[i]['name']).toLowerCase()}-score"><h2 class="minus" onclick="minus(event)">−</h2><h2 class="counter" id="${(players[i]['name']).toLowerCase()}-counter" objnum="${i}">${players[i]['score']}</h2><h2 class="plus" onclick="plus(event)">+</h2></div>`;
                 document.getElementById('scores-cont').appendChild(newScoreBox);
             }
         } else if (selectedGame[0] == '14.1') {
@@ -142,4 +148,16 @@ function initChange(event) {
     selectedGameOrigIndex.push(availableGames.indexOf(curGame));
     availableGames.splice(availableGames.indexOf(selectedGame[0]), 1);
     document.getElementById('cg-container').style.display = "none";
+}
+
+function minus(event) {
+    if (players[event.target.nextSibling.getAttribute('objnum')]['score'] > 0) {
+        players[event.target.nextSibling.getAttribute('objnum')]['score'] -= 1;
+        document.getElementById(players[event.target.nextSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.nextSibling.getAttribute('objnum')]['score'];
+    }
+}
+
+function plus(event) {
+    players[event.target.previousElementSibling.getAttribute('objnum')]['score'] += 1;
+    document.getElementById(players[event.target.previousElementSibling.getAttribute('objnum')]['name'].toLowerCase()+'-counter').innerHTML = players[event.target.previousElementSibling.getAttribute('objnum')]['score'];
 }
