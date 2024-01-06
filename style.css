@@ -222,12 +222,12 @@ h3 {
 .alert-box {
     z-index: 2;
     width: 80%;
-    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    gap: 1rem;
     /* background-color: #242424; */
     background-image: url(./background-blue-cloth.png);
     box-shadow: 5px 10px 10px black;
@@ -238,6 +238,7 @@ h3 {
     color: white;
     font-family: Calibri;
     font-size: 30px;
+    text-align: center;
 }
 
 .ok {

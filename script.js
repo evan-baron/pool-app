@@ -90,7 +90,7 @@ function startButton() {
             }
         } else {
             document.getElementById('alert').style.display = 'flex';
-            document.getElementById('alert-msg').innerHTML = 'Player names must only consist of letters or numbers.';
+            document.getElementById('alert-msg').innerHTML = 'Player names must only consist of letters or numbers';
             players = [];
             return;
         }
@@ -105,6 +105,8 @@ function startButton() {
 
     if (playerCount < 2) {
         document.getElementById('alert').style.display = 'flex';
+        document.getElementById('alert-msg').innerHTML = 'Not enough players';
+
     } else {
         document.getElementById('apc').style.display = "none";
         document.getElementById('title').innerHTML = selectedGame[0];
