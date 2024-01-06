@@ -386,7 +386,7 @@ h3 {
     padding: 1rem;
     padding-top: 0rem;
     /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-image: url(background-blue-cloth.png);
     box-shadow: 5px 10px 10px black;
     border-radius: 5px;
     gap: 1rem;
