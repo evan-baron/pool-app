@@ -66,41 +66,46 @@ function removePlayer(param) {
 
 function startButton() {
     players = []; //clears the player names stored for the time being
+    
+    for (let i = 0; i<playerCount; i++) {
+        if (document.getElementById('input-player'+(parseInt(i)+1)).value == '') {
+            players[i] = {
+                name: 'Player-'+(parseInt(i)+1),
+                game: selectedGame[0],
+                '8-ball': 0,
+                '9-ball': 0,
+                '10-ball': 0,
+                'one-pocket': 0,
+                'total-score': 0
+            };
+        } else if (document.getElementById('input-player'+(parseInt(i)+1)).value.match(/^[A-Za-z0-9_.-\s]+$/)) {
+            players[i] = {
+                name: document.getElementById('input-player'+(parseInt(i)+1)).value,
+                game: selectedGame[0],
+                '8-ball': 0,
+                '9-ball': 0,
+                '10-ball': 0,
+                'one-pocket': 0,
+                'total-score': 0
+            }
+        } else {
+            document.getElementById('alert').style.display = 'flex';
+            document.getElementById('alert-msg').innerHTML = 'Player names must only consist of letters or numbers.';
+            players = [];
+            return;
+        }
+    }
+    
+    for (let i = 0; i<players.length; i++) {
+        let newScoreBox = document.createElement('div');
+        newScoreBox.setAttribute('class', 'scorebox')
+        newScoreBox.innerHTML = `<h2 class="player">${players[i]['name']}:</h2><div class="scores" id="${(players[i]['name'])}-score"><h2 class="minus" onclick="minus(event)">−</h2><h2 class="counter" id="${(players[i]['name'])}-counter" objnum="${i}">${players[i][selectedGame[0]]}</h2><h2 class="plus" onclick="plus(event)">+</h2></div>`;
+        document.getElementById('scores-cont').appendChild(newScoreBox);
+    }
+
     if (playerCount < 2) {
         document.getElementById('alert').style.display = 'flex';
     } else {
-        for (let i = 0; i<playerCount; i++) {
-            if (document.getElementById('input-player'+(parseInt(i)+1)).value == '') {
-                players[i] = {
-                    name: 'Player-'+(parseInt(i)+1),
-                    game: selectedGame[0],
-                    '8-ball': 0,
-                    '9-ball': 0,
-                    '10-ball': 0,
-                    'one-pocket': 0,
-                    'total-score': 0
-                };
-                //MAKE PLAYERS AN OBJECT AND THEN YOU CAN KEEP PLAYER NAME AND SCORE TOGETHER IN ONE SPOT
-            } else {
-                players[i] = {
-                    name: document.getElementById('input-player'+(parseInt(i)+1)).value,
-                    game: selectedGame[0],
-                    '8-ball': 0,
-                    '9-ball': 0,
-                    '10-ball': 0,
-                    'one-pocket': 0,
-                    'total-score': 0
-                }
-            }
-        }
-
-        for (let i = 0; i<players.length; i++) {
-            let newScoreBox = document.createElement('div');
-            newScoreBox.setAttribute('class', 'scorebox')
-            newScoreBox.innerHTML = `<h2 class="player">${players[i]['name']}:</h2><div class="scores" id="${(players[i]['name'])}-score"><h2 class="minus" onclick="minus(event)">−</h2><h2 class="counter" id="${(players[i]['name'])}-counter" objnum="${i}">${players[i][selectedGame[0]]}</h2><h2 class="plus" onclick="plus(event)">+</h2></div>`;
-            document.getElementById('scores-cont').appendChild(newScoreBox);
-        }
-
         document.getElementById('apc').style.display = "none";
         document.getElementById('title').innerHTML = selectedGame[0];
         document.getElementById('ksc').style.display = "flex";
