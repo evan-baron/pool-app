@@ -67,13 +67,14 @@ h3 {
     font-size: 30px;
     padding: .35rem 0;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     color: white;
 }
 
-.main-menu-container > button:active {
+/* .main-menu-container > button:active {
     background-color: lightgray;
-}
+} */
 
 /** Add Players **/
 
@@ -99,7 +100,8 @@ h3 {
     border: 2px white solid;
     border-radius: 5px;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     color: white;
 }
 
@@ -140,7 +142,8 @@ h3 {
     width: 50%;
     color: white;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     border: 0px;
     text-align: left;
     margin: 0;
@@ -153,9 +156,9 @@ h3 {
     font-size: 25px;
 }
 
-.add-player:active {
+/* .add-player:active {
     color: darkgray;
-}
+} */
 
 .apc-button-container {
     display: flex;
@@ -173,7 +176,8 @@ h3 {
     font-size: 25px;
     padding: .35rem 0;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     color: white;
     margin-top: auto;
     margin-bottom: 1.5rem;
@@ -187,15 +191,16 @@ h3 {
     font-size: 25px;
     padding: .35rem 0;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     color: white;
     margin-top: auto;
     margin-bottom: 1.5rem;
 }
 
-.back:active, .start:active {
+/* .back:active, .start:active {
     background-color: lightgray;
-}
+} */
 
 .alert-container {
     position: absolute;
@@ -224,7 +229,8 @@ h3 {
     align-items: center;
     padding: 1rem;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     box-shadow: 5px 10px 10px black;
     border-radius: 5px;
 }
@@ -242,7 +248,8 @@ h3 {
     font-size: 25px;
     padding: .35rem 0;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     color: white;
 }
 
@@ -316,13 +323,14 @@ h3 {
     font-size: 25px;
     padding: .35rem 1rem;
     /* background-color: #242424; */
-    background-image: url(./background-blue-cloth.png);
+    /* background-image: url(./background-blue-cloth.png); */
+    background: transparent;
     color: white;
 }
 
-.change-game:active, .finish:active, .cg-button:active {
+/* .change-game:active, .finish:active, .cg-button:active {
     background-color: lightgray;
-}
+} */
 
 /** Change Game Container **/
 
