@@ -8,7 +8,7 @@ window.addEventListener("resize", () => {
 
 let playerCount = 1;
 let players = [];
-let availableGames = ['8-ball','9-ball','10-ball','one-pocket','straight-pool']
+let availableGames = ['8-ball','9-ball','10-ball','one-pocket']
 let selectedGame = [];
 let selectedGameOrigIndex = [];
 
@@ -77,7 +77,6 @@ function startButton() {
                     '8-ball': 0,
                     '9-ball': 0,
                     '10-ball': 0,
-                    'straight-pool': 0,
                     'one-pocket': 0,
                     'total-score': 0
                 };
@@ -89,7 +88,6 @@ function startButton() {
                     '8-ball': 0,
                     '9-ball': 0,
                     '10-ball': 0,
-                    'straight-pool': 0,
                     'one-pocket': 0,
                     'total-score': 0
                 }
@@ -116,7 +114,7 @@ function okAlert() {
 }
 
 function changeGame() {
-    availableGames = ['8-ball','9-ball','10-ball','one-pocket','straight-pool']
+    availableGames = ['8-ball','9-ball','10-ball','one-pocket']
     availableGames.splice(availableGames.indexOf(selectedGame[0]), 1);
     for (let i = 0; i<availableGames.length; i++) {
         let addGameButton = document.createElement('button');
@@ -153,8 +151,6 @@ function initChange(event) {
 
     if (selectedGame[0] == 'one-pocket') {
         document.getElementById('title').innerHTML = 'One Pocket';
-    } else if (selectedGame[0] == 'straight-pool') {
-        document.getElementById('title').innerHTML = 'Straight Pool'; 
     } else {
         document.getElementById('title').innerHTML = selectedGame[0];
     }
@@ -184,15 +180,12 @@ function finishGame() {
         console.log(players[i]['name']+' won '+[players[i]['total-score']]+' total games.')
         document.getElementById('fs-msg').innerHTML += `<h2>${players[i]['name']} won ${[players[i]['total-score']]} games</h2>`
         for (const key in players[i]) {
-            if (key != 'total-score' && key != 'one-pocket' && key != 'straight-pool' && players[i][key] > 0) {
+            if (key != 'total-score' && key != 'one-pocket' && players[i][key] > 0) {
                 console.log(`${key}: ${players[i][key]}`);
                 document.getElementById('fs-msg').innerHTML += `<h3>${key}: ${players[i][key]}</h3>`
             } else if (key == 'one-pocket' && players[i][key] > 0) {
                 console.log(`${key}: ${players[i][key]}`);
                 document.getElementById('fs-msg').innerHTML += `<h3>One Pocket: ${players[i][key]}</h3>`
-            } else if (key == 'straight-pool' && players[i][key] > 0) {
-                console.log(`${key}: ${players[i][key]}`);
-                document.getElementById('fs-msg').innerHTML += `<h3>Straight Pool: ${players[i][key]}</h3>`
             }
         }
     }
