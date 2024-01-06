@@ -229,8 +229,7 @@ h3 {
     align-items: center;
     padding: 1rem;
     /* background-color: #242424; */
-    /* background-image: url(./background-blue-cloth.png); */
-    background: transparent;
+    background-image: url(./background-blue-cloth.png);
     box-shadow: 5px 10px 10px black;
     border-radius: 5px;
 }
