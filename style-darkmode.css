@@ -6,8 +6,7 @@
 }
 
 body {
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     width: 100vw;
     height: calc(var(--vh, 1vh) * 100);
 }
@@ -15,8 +14,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
 }
@@ -27,12 +25,12 @@ h1 {
     align-items: flex-end;
     justify-content: center;
     height: 5rem;
-    color: white;
+    color: red;
     font-size: 50px;
     margin-left: 2rem;
     margin-right: 2rem;
     padding-bottom: .5rem;
-    border-bottom: 2px white solid;
+    border-bottom: 2px gray solid;
 }
 
 h2 {
@@ -59,18 +57,17 @@ h3 {
 }
 
 .main-menu-container > button {
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
     width: 60%;
     font-size: 30px;
     padding: .35rem 0;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
 }
 
 .main-menu-container > button:active {
-    background-color: lightgray;
+    background-color: darkgray;
 }
 
 /** Add Players **/
@@ -94,15 +91,15 @@ h3 {
 .player-input-container > button {
     font-size: 15px;
     height: 2.5rem;
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
+    opacity: .5;
 }
 
 .player-input-container > button:active {
-    background-color: lightgray;
+    background-color: darkgray;
 }
 
 .player-input-container > button:focus {
@@ -118,18 +115,18 @@ h3 {
     width: 70%;
     font-size: 1.5rem;
     text-indent: .5rem;
-    /* color: rgba(225, 225, 225, .75); */
-    /* background-color:  #353535; */
+    color: rgba(225, 225, 225, .75);
+    background-color:  #353535;
     box-shadow: inset 1px 1px 5px rgb(15, 15, 15);
 }
 
 .input-player::placeholder {
     left: 1rem;
-    /* color: rgba(225, 225, 225, .5); */
+    color: rgba(225, 225, 225, .5);
 }
 
 .input-player:focus {
-    /* color: rgb(225, 225, 225); */
+    color: rgb(225, 225, 225);
     outline: 1px solid white !important;
     border: 1px solid rgb(225, 225, 225);
 }
@@ -137,8 +134,7 @@ h3 {
 .add-player {
     width: 50%;
     color: white;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     border: 0px;
     text-align: left;
     margin: 0;
@@ -166,12 +162,11 @@ h3 {
 .back {
     align-self: center;
     width: 30%;
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
     font-size: 25px;
     padding: .35rem 0;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
     margin-top: auto;
     margin-bottom: 1.5rem;
@@ -180,19 +175,18 @@ h3 {
 .start {
     align-self: center;
     width: 60%;
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
     font-size: 25px;
     padding: .35rem 0;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
     margin-top: auto;
     margin-bottom: 1.5rem;
 }
 
 .back:active, .start:active {
-    background-cololightgrayray;
+    background-color: darkgray;
 }
 
 .alert-container {
@@ -221,8 +215,7 @@ h3 {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     box-shadow: 5px 10px 10px black;
     border-radius: 5px;
 }
@@ -235,12 +228,11 @@ h3 {
 
 .ok {
     width: 50%;
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
     font-size: 25px;
     padding: .35rem 0;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
 }
 
@@ -309,17 +301,16 @@ h3 {
 }
 
 .change-game, .finish {
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
     font-size: 25px;
     padding: .35rem 1rem;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
 }
 
 .change-game:active, .finish:active, .cg-button:active {
-    background-color: lightgray;
+    background-color: darkgray;
 }
 
 /** Change Game Container **/
@@ -342,8 +333,7 @@ h3 {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     box-shadow: 5px 10px 10px black;
     border-radius: 5px;
     gap: 1rem;
@@ -351,12 +341,11 @@ h3 {
 
 .cg-button {
     width: 80%;
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
     font-size: 25px;
     padding: .35rem 1rem;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
 }
 
@@ -385,8 +374,7 @@ h3 {
     align-items: center;
     padding: 1rem;
     padding-top: 0rem;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     box-shadow: 5px 10px 10px black;
     border-radius: 5px;
     gap: 1rem;
@@ -401,12 +389,11 @@ h3 {
 .fs-back, .fs-done {
     align-self: center;
     width: 50%;
-    border: 2px white solid;
+    border: 2px gray solid;
     border-radius: 5px;
     font-size: 25px;
     padding: .35rem 0;
-    /* background-color: #242424; */
-    background-image: url(/background-blue-cloth.png);
+    background-color: #242424;
     color: white;
     margin-top: auto;
 }
