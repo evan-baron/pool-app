@@ -109,7 +109,11 @@ function startButton() {
 
     } else {
         document.getElementById('apc').style.display = "none";
-        document.getElementById('title').innerHTML = selectedGame[0];
+        if (selectedGame[0] == 'one-pocket') {
+            document.getElementById('title').innerHTML = 'One Pocket';
+        } else {
+            document.getElementById('title').innerHTML = selectedGame[0];
+        }
         document.getElementById('ksc').style.display = "flex";
     }
 }
